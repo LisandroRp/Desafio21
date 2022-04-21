@@ -10,15 +10,15 @@ const TEST_NUMBER = process.env.ADMINNUMBER || "+5491144373492";
 
 const exceptionFactory = new ExceptionFactory();
 
-/* const transporter = createTransport({
-    name: 'example.com',
-    host: "smtp.ethereal.email",
-    port: 587,
-    auth: {
-        user: 'taya.klein42@ethereal.email',
-        pass: '12v4CwCqb1jnqEHQqK'
-    },
-}); */
+// const transporter = createTransport({
+//     name: 'example.com',
+//     host: "smtp.ethereal.email",
+//     port: 587,
+//     auth: {
+//         user: 'taya.klein42@ethereal.email',
+//         pass: '12v4CwCqb1jnqEHQqK'
+//     },
+// });
 
 const welcomeEmail = async (body) => {
     return (
@@ -58,25 +58,25 @@ const orderEmail = async (body) => {
 // })
 
 const sendEmail = async (subject, body) => {
-    // let mail = {
-    //     from: 'ecommerce@gmail.com', // sender address
-    //     to: TEST_MAIL, // list of receivers
-    //     subject: subject, // Subject line
-    //     text: "body", // plain text body
-    //     /* html: "<b>" + body + "</b>", // html body */
-    //     html: body, // html body
-    // }
-    // try {
-    //     let info = await transporter.sendMail(mail)
-    //     console.log("ok")
-    //     console.log(info)
-    //     return true
-    // }
-    // catch (error) {
-    //     console.log("mal")
-    //     console.log(error)
-    //     throw exceptionFactory.throwException(error.error, "No se pudieron traer los productos", error.message)
-    // }
+    let mail = {
+        from: 'ecommerce@gmail.com', // sender address
+        to: TEST_MAIL, // list of receivers
+        subject: subject, // Subject line
+        text: "body", // plain text body
+        /* html: "<b>" + body + "</b>", // html body */
+        html: body, // html body
+    }
+    try {
+        // let info = await transporter.sendMail(mail)
+        console.log("ok")
+        console.log(info)
+        return true
+    }
+    catch (error) {
+        console.log("mal")
+        console.log(error)
+        throw exceptionFactory.throwException(error.error, "No se pudieron traer los productos", error.message)
+    }
 }
 
 const sendWpp = async (body) => {
